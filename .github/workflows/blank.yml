@@ -17,7 +17,7 @@ jobs:
   build-for-test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    environment: TEST_1
+    environment: STAGE_1
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -40,7 +40,11 @@ jobs:
           which pip3
           python --version
           python3 --version
-      - name: Print secrets
+      - name: Print env secrets
         run: echo "Env Secret ${{ secrets.MY_SECRET_1 }}"
-      - name: Print variables
+      - name: Print env variables
         run: echo "Env Variable ${{ vars.MY_VARIABLE_1 }}"
+      - name: Print repo secrets
+        run: echo "Repo Secret ${{ secrets.MY_REPO_SECRET }}"
+      - name: Print repo variables
+        run: echo "Repo Variable ${{ vars.MY_REPO_VARIABLE }}"
